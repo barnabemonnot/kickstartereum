@@ -4,7 +4,7 @@
 
 However, this contract fails in the following way: an `approvalCount` variable is kept by each request, and if the `approvalCount` is larger than half of the `contributorCount`, the request is granted. But `contributorCount` is incremented every time someone donates to the campaign, opening the door to Sybil attacks where the same person (even with the same account) donates several times.
 
-In this project, we propose a different implementation where the total amount of contributions is tracked by a variable `approversWeight`. Each time a contributor donates money to the campaign, the contract checks if they have donated before and increments their weight by the new donation amount. A request is granted if and only if a majority weight of donators approves the request, similar to shareholder votes that are usually proportional to participation.
+In this project, we propose a different implementation where the total amount of contributions is tracked by a variable `approversWeight`. Each time a contributor `c` donates money to the campaign, the contract checks if they have donated before and increments their weight `contributions[c]` by the new donation amount. A request is granted if and only if a majority weight of donators approves the request, similar to shareholder votes that are usually proportional to participation.
 
 ### Pain points
 
